@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import { UserLayout } from "./component/UserLayout";
+import { AdminLayout } from "./component/AdminLayout";
+import { UserHomePage } from "./page/user/Home.page";
+import { AdminHomePage } from "./page/admin/Home.page";
+import { AuthorPage } from "./page/user/Author.page";
+import { LoginPage } from "./page/Login.page";
+import { AuthorsPage } from "./page/user/Authors.page";
 
-function App() {
+import { RequireAuth } from "./hoc/RequireAuth";
+import { BooksPage } from "./page/user/Books.page";
+
+export function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <>
+      <Routes>
+        <Route path="/" element={<UserLayout />}>
+          <Route path="/login" element={<LoginPage />} />
+          <Route index element={<UserHomePage />} />
+          <Route path="author" element={<AuthorsPage />} />
+          <Route path="author/:id" element={<AuthorPage />} />
+          <Route path="book" element={<BooksPage />} />
+          <Route path="book/:id" element={<BooksPage />} />
+          <Route path="publisher" element={<>Publishers</>} />
+          <Route path="publisher/:id" element={<>Publisher</>} />
+          <Route path="category" element={<>Categories</>} />
+          <Route path="category/:id" element={<>Category</>} />
+        </Route>
+        <Route
+          path="/admin"
+          element={
+            <RequireAuth>
+              <AdminLayout />
+            </RequireAuth>
+          }
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Route index element={<AdminHomePage />} />
+        </Route>
+      </Routes>
+    </>
   );
 }
-
-export default App;
