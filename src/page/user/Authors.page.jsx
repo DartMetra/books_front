@@ -13,13 +13,6 @@ export function AuthorsPage() {
   const [perPage] = useState(3);
 
   useEffect(() => {
-    console.log(queryParams.get("page"));
-    axios.get(API_URI + `author?limit=${perPage}&query=${queryParams.get("query")}`).then((res) => {
-      setAuthors({ authors: res.data.authors, total: res.data.totalCount });
-    });
-  }, []);
-
-  useEffect(() => {
     axios.get(API_URI + `author?limit=${perPage}&query=${queryParams.get("query")}&skip=${perPage * curPage - perPage}`).then((res) => {
       setAuthors({ authors: res.data.authors, total: res.data.totalCount });
     });

@@ -97,14 +97,6 @@ export function BookPage() {
                     </Link>
                   ))}
                 </ul>
-                <hr className="mb-3 tm-hr-primary" />
-                <h2 className="tm-mb-40 tm-post-title tm-color-primary">Related Posts</h2>
-                <a href="#" className="d-block tm-mb-40">
-                  <figure>
-                    <img src="img/img-02.jpg" alt="Image" className="mb-3 img-fluid" />
-                    <figcaption className="tm-color-primary">Duis mollis diam nec ex viverra scelerisque a sit</figcaption>
-                  </figure>
-                </a>
               </div>
             </aside>
           </div>

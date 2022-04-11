@@ -16,7 +16,7 @@ export function SearchForm({ resource, value }) {
     <div className="row tm-row">
       <div className="col-12">
         <form onSubmit={handleSearch} className="form-inline tm-mb-80 tm-search-form">
-          <input className="form-control tm-search-input" ref={searchRef} type="text" placeholder="Search..." aria-label="Search" />
+          <input className="form-control tm-search-input" ref={searchRef} type="text" placeholder="Пошук..." aria-label="Search" />
           <button className="tm-search-button" type="submit">
             <i className="fas fa-search tm-search-icon" aria-hidden="true"></i>
           </button>

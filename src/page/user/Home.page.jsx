@@ -19,7 +19,7 @@ export function UserHomePage() {
     <>
       <SearchForm resource="book" />
       {/*BOOKS*/}
-      <div class="row tm-row">
+      <div className="row tm-row">
         {books.map((book) => (
           <BookGrid book={book} key={book._id} />
         ))}

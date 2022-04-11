@@ -13,13 +13,6 @@ export function BooksPage() {
   const [perPage] = useState(3);
 
   useEffect(() => {
-    console.log(queryParams.get("page"));
-    axios.get(API_URI + `book?limit=${perPage}&query=${queryParams.get("query")}`).then((res) => {
-      setBooks({ books: res.data.books, total: res.data.totalCount });
-    });
-  }, []);
-
-  useEffect(() => {
     axios.get(API_URI + `book?limit=${perPage}&query=${queryParams.get("query")}&skip=${perPage * curPage - perPage}`).then((res) => {
       setBooks({ books: res.data.books, total: res.data.totalCount });
     });

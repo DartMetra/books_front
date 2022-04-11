@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-import { UserLayout } from "./component/UserLayout";
+
+import UserLayout from "./component/UserLayout";
 import { AdminLayout } from "./component/AdminLayout";
 import { UserHomePage } from "./page/user/Home.page";
 import { AdminHomePage } from "./page/admin/Home.page";
@@ -10,8 +11,21 @@ import { AuthorsPage } from "./page/user/Authors.page";
 import { RequireAuth } from "./hoc/RequireAuth";
 import { BooksPage } from "./page/user/Books.page";
 import { BookPage } from "./page/user/Book.page";
+import { PublishersPage } from "./page/user/Publishers.page";
+import { PublisherPage } from "./page/user/Publisher.page";
+import { useContext, useEffect } from "react";
+import { Context } from ".";
 
-export function App() {
+import { observer } from "mobx-react-lite";
+
+function App() {
+  const { store } = useContext(Context);
+
+  useEffect(() => {
+    if (localStorage.getItem("accessToken") && localStorage.getItem("refreshToken")) {
+      store.checkAuth();
+    }
+  });
   return (
     <>
       <Routes>
@@ -22,8 +36,8 @@ export function App() {
           <Route path="author/:id" element={<AuthorPage />} />
           <Route path="book" element={<BooksPage />} />
           <Route path="book/:id" element={<BookPage />} />
-          <Route path="publisher" element={<>Publishers</>} />
-          <Route path="publisher/:id" element={<>Publisher</>} />
+          <Route path="publisher" element={<PublishersPage />} />
+          <Route path="publisher/:id" element={<PublisherPage />} />
           <Route path="genre" element={<>genres</>} />
           <Route path="genre/:id" element={<>genre</>} />
         </Route>
@@ -41,3 +55,4 @@ export function App() {
     </>
   );
 }
+export default observer(App);

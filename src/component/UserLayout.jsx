@@ -1,9 +1,15 @@
 import { useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { CustomLink } from "./CustomLink";
 
-export function UserLayout() {
+import { observer } from "mobx-react-lite";
+import { useContext, useEffect } from "react";
+import { Context } from "../";
+
+function UserLayout() {
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
+  const { store } = useContext(Context);
 
   function toggleHeaderShow() {
     setShow(!show);
@@ -11,6 +17,7 @@ export function UserLayout() {
 
   return (
     <>
+      <h1>{store.isAuth ? "ok" : "no"}</h1>
       {/*HEADER*/}
       <header className={show ? "tm-header show" : "tm-header"} id="tm-header">
         <div className="tm-header-wrapper">
@@ -29,7 +36,7 @@ export function UserLayout() {
                 <CustomLink to="/">
                   <span className="tm-nav-link">
                     <i className="fas fa-home"></i>
-                    Home
+                    Головна
                   </span>
                 </CustomLink>
               </li>
@@ -37,7 +44,7 @@ export function UserLayout() {
                 <CustomLink to="/book">
                   <span className="tm-nav-link">
                     <i className="fas fa-book"></i>
-                    Books
+                    Книжки
                   </span>
                 </CustomLink>
               </li>
@@ -45,7 +52,7 @@ export function UserLayout() {
                 <CustomLink to="/author">
                   <span className="tm-nav-link">
                     <i className="fas fa-users"></i>
-                    Authors
+                    Автори
                   </span>
                 </CustomLink>
               </li>
@@ -53,7 +60,7 @@ export function UserLayout() {
                 <CustomLink to="/publisher">
                   <span className="tm-nav-link">
                     <i className="fas fa-globe"></i>
-                    Publishers
+                    Видавництва
                   </span>
                 </CustomLink>
               </li>
@@ -70,6 +77,26 @@ export function UserLayout() {
               <i className="fab fa-telegram tm-social-icon"></i>
             </a>
           </div>
+          {store.isAuth ? (
+            <button
+              className="tm-btn tm-btn-primary tm-btn-small"
+              onClick={() => {
+                store.logout();
+                navigate("/login");
+              }}
+            >
+              Вийти
+            </button>
+          ) : (
+            <button
+              className="tm-btn tm-btn-primary tm-btn-small"
+              onClick={() => {
+                navigate("/login");
+              }}
+            >
+              Логін
+            </button>
+          )}
         </div>
       </header>
       <div className="container-fluid">
@@ -91,3 +118,4 @@ export function UserLayout() {
     </>
   );
 }
+export default observer(UserLayout);
