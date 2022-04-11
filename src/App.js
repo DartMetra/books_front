@@ -9,6 +9,7 @@ import { AuthorsPage } from "./page/user/Authors.page";
 
 import { RequireAuth } from "./hoc/RequireAuth";
 import { BooksPage } from "./page/user/Books.page";
+import { BookPage } from "./page/user/Book.page";
 
 export function App() {
   return (
@@ -20,11 +21,11 @@ export function App() {
           <Route path="author" element={<AuthorsPage />} />
           <Route path="author/:id" element={<AuthorPage />} />
           <Route path="book" element={<BooksPage />} />
-          <Route path="book/:id" element={<BooksPage />} />
+          <Route path="book/:id" element={<BookPage />} />
           <Route path="publisher" element={<>Publishers</>} />
           <Route path="publisher/:id" element={<>Publisher</>} />
-          <Route path="category" element={<>Categories</>} />
-          <Route path="category/:id" element={<>Category</>} />
+          <Route path="genre" element={<>genres</>} />
+          <Route path="genre/:id" element={<>genre</>} />
         </Route>
         <Route
           path="/admin"

@@ -5,6 +5,19 @@ TemplateMo 553 Xtra Blog
 https://templatemo.com/tm-553-xtra-blog
 
 */
+.pointer {
+  cursor: pointer;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.img {
+  height: 362px;
+  width: 250px;
+}
 
 html {
   overflow-x: hidden;
@@ -39,7 +52,7 @@ hr {
 }
 
 .tm-header {
-  background-color: #0cc;
+  background-color: #ff952b;
   color: white;
 
   position: fixed;
@@ -81,7 +94,7 @@ hr {
 }
 
 .tm-site-logo i {
-  color: #0cc;
+  color: #ff952b;
 }
 
 .tm-main {
@@ -121,7 +134,7 @@ hr {
 
 .tm-nav-item:hover .tm-nav-link,
 .tm-nav-item.active .tm-nav-link {
-  color: #0cc;
+  color: #ff952b;
   background-color: white;
   text-decoration: none;
 }
@@ -170,7 +183,7 @@ ul {
 }
 
 .tm-social-icon {
-  color: #0cc;
+  color: #ff952b;
   transition: all 0.3s ease;
 }
 
@@ -202,7 +215,7 @@ ul {
   width: 480px;
   margin-right: 30px;
   border-radius: 0;
-  border-color: #0cc;
+  border-color: #ff952b;
   font-size: 1.2rem;
 }
 
@@ -210,7 +223,7 @@ ul {
   width: 60px;
   height: 60px;
   border: none;
-  background-color: #0cc;
+  background-color: #ff952b;
   transition: all 0.3s ease;
 }
 
@@ -229,17 +242,11 @@ ul {
   cursor: pointer;
 }
 
-.tm-post-link-inner {
-  overflow: hidden;
-  background: #3085a3;
-}
-
 .tm-post-link img {
   position: relative;
   display: block;
   min-height: 100%;
   max-width: 100%;
-  opacity: 0.8;
 }
 
 .effect-lily img {
@@ -269,7 +276,7 @@ ul {
 .tm-new-badge {
   top: 25px;
   right: -10px;
-  background-color: #0cc;
+  background-color: #ff952b;
   color: white;
   padding: 5px 20px;
 }
@@ -285,7 +292,7 @@ ul {
 }
 
 .tm-post-link:hover .tm-post-title {
-  color: #0cc;
+  color: #ff952b;
 }
 
 .tm-btn {
@@ -296,7 +303,7 @@ ul {
 }
 
 .tm-btn-primary {
-  background-color: #0cc;
+  background-color: #ff952b;
   color: white;
   padding: 8px 43px;
   border: none;
@@ -333,7 +340,7 @@ ul {
 
 .tm-paging-item .tm-paging-link:hover,
 .tm-paging-item.active .tm-paging-link {
-  background-color: #0cc;
+  background-color: #ff952b;
   color: white;
 }
 
@@ -344,7 +351,7 @@ ul {
 }
 
 .tm-external-link {
-  color: #0cc;
+  color: #ff952b;
 }
 .tm-external-link:hover {
   color: #09b6b6;
@@ -370,7 +377,7 @@ ul {
 
 /* Single Post page */
 hr.tm-hr-primary {
-  border-top: 5px solid #0cc;
+  border-top: 5px solid #ff952b;
 }
 
 video {
@@ -394,7 +401,7 @@ video {
 
 .form-control {
   height: 45px;
-  border-color: #0cc;
+  border-color: #ff952b;
   border-radius: 0;
 }
 
@@ -519,7 +526,7 @@ a:hover figcaption {
 .tm-social-links li a {
   display: block;
   color: white;
-  background-color: #0cc;
+  background-color: #ff952b;
   width: 45px;
   height: 45px;
   margin-right: 15px;

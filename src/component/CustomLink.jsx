@@ -6,7 +6,7 @@ export function CustomLink({ children, to, ...props }) {
 
   return (
     <div>
-      <Link class={match ? "active tm-nav-item" : "tm-nav-item"} to={to} {...props}>
+      <Link className={match ? "active tm-nav-item" : "tm-nav-item"} to={to} {...props}>
         {children}
       </Link>
     </div>

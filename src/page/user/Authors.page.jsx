@@ -1,32 +1,44 @@
-import { API_URI } from "../../const";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { AuthorList } from "../../component/AuthorList";
+import { API_URI } from "../../const";
+import { AuthorGrid } from "../../component/AuthorGrid";
+import { SearchForm } from "../../component/SearchForm";
+import { useSearchParams } from "react-router-dom";
+import { Pagination } from "../../component/Pagination";
 
 export function AuthorsPage() {
-  const [authors, setAuthors] = useState([]);
+  const [authors, setAuthors] = useState({ authors: [], total: 0 });
+  const [queryParams] = useSearchParams({ page: 1, query: "" });
+  const [curPage, setCurPage] = useState(1);
+  const [perPage] = useState(3);
 
   useEffect(() => {
-    axios.get(API_URI + "author").then((res) => {
-      console.log(res.data);
-      setAuthors(res.data.authors);
+    console.log(queryParams.get("page"));
+    axios.get(API_URI + `author?limit=${perPage}&query=${queryParams.get("query")}`).then((res) => {
+      setAuthors({ authors: res.data.authors, total: res.data.totalCount });
     });
   }, []);
 
-  function update() {
-    axios.get(API_URI + "author").then((res) => {
-      console.log(res.data);
+  useEffect(() => {
+    axios.get(API_URI + `author?limit=${perPage}&query=${queryParams.get("query")}&skip=${perPage * curPage - perPage}`).then((res) => {
+      setAuthors({ authors: res.data.authors, total: res.data.totalCount });
     });
-  }
+  }, [curPage, queryParams, perPage]);
+
+  const paginate = (pageNumber) => {
+    setCurPage(pageNumber);
+  };
 
   return (
-    <div>
-      Authors<button onClick={update}></button>
-      <div>
-        {authors.map((author) => (
-          <AuthorList key={author._id} author={author} />
+    <>
+      <SearchForm resource="author" value={queryParams.get("query")} />
+      {/*BOOKS*/}
+      <div className="row tm-row">
+        {authors.authors.map((author) => (
+          <AuthorGrid author={author} key={author._id} />
         ))}
       </div>
-    </div>
+      <Pagination perPage={perPage} total={authors.total} paginate={paginate} page={curPage} />
+    </>
   );
 }
