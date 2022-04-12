@@ -29,7 +29,8 @@ export default class Store {
 
       localStorage.setItem("accessToken", res.data.accessToken);
       localStorage.setItem("refreshToken", res.data.refreshToken);
-      this.setAdmin(res.data.admin);
+      this.setAdmin(res.data.isAdmin);
+      console.log("store", this.isAdmin);
       this.setAuth(true);
       this.setUser(res.data.user);
     } catch (e) {
@@ -43,7 +44,7 @@ export default class Store {
 
       localStorage.setItem("accessToken", res.data.accessToken);
       localStorage.setItem("refreshToken", res.data.refreshToken);
-      this.setAdmin(res.data.admin);
+      this.setAdmin(res.data.isAdmin);
       this.setAuth(true);
       this.setUser(res.data.user);
     } catch (e) {
@@ -66,9 +67,12 @@ export default class Store {
       const res = await axios.post(`${API_URL}user/auth/refresh`, { refreshToken: localStorage.getItem("refreshToken") });
       localStorage.setItem("accessToken", res.data.accessToken);
       localStorage.setItem("refreshToken", res.data.refreshToken);
-      this.setAdmin(res.data.admin);
+      this.setAdmin(res.data.isAdmin);
+      console.log("STORE REF", this.isAdmin);
+
       this.setAuth(true);
       this.setUser(res.data.user);
+      console.log(this.user.email);
     } catch (e) {
       console.log("REFRESH ERROR");
     }

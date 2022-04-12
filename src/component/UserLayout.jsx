@@ -17,16 +17,15 @@ function UserLayout() {
 
   return (
     <>
-      <h1>{store.isAuth ? "ok" : "no"}</h1>
       {/*HEADER*/}
       <header className={show ? "tm-header show" : "tm-header"} id="tm-header">
         <div className="tm-header-wrapper">
           <button className="navbar-toggler" onClick={toggleHeaderShow} type="button" aria-label="Toggle navigation">
-            <i className="fas fa-bars"></i>
+            <i className="fa fa-bars"></i>
           </button>
           <div className="tm-site-header">
             <div className="mb-3 mx-auto tm-site-logo">
-              <i className="fas fa-times fa-2x"></i>
+              <i className="fas fa-book fa-2x"></i>
             </div>
             <h1 className="text-center">Rotten Mandarines</h1>
           </div>
@@ -35,8 +34,8 @@ function UserLayout() {
               <li className="tm-nav-item">
                 <CustomLink to="/">
                   <span className="tm-nav-link">
-                    <i className="fas fa-home"></i>
-                    Головна
+                    <i className="fas fa-star"></i>
+                    Улюблені
                   </span>
                 </CustomLink>
               </li>
@@ -105,13 +104,8 @@ function UserLayout() {
           {/*FOOTER*/}
           <footer className="row tm-row">
             <hr className="col-12" />
-            <div className="col-md-6 col-12 tm-color-gray">
-              Design:
-              <a rel="nofollow" target="_parent" href="https://templatemo.com" className="tm-external-link">
-                TemplateMo
-              </a>
-            </div>
-            <div className="col-md-6 col-12 tm-color-gray tm-copyright">Copyright 2020 Xtra Blog Company Co. Ltd.</div>
+            <div className="col-md-6 col-12 tm-color-gray"></div>
+            <div className="col-md-6 col-12 tm-color-gray tm-copyright"></div>
           </footer>
         </main>
       </div>

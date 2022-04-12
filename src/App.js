@@ -1,22 +1,34 @@
 import { Routes, Route } from "react-router-dom";
 
 import UserLayout from "./component/UserLayout";
-import { AdminLayout } from "./component/AdminLayout";
 import { UserHomePage } from "./page/user/Home.page";
-import { AdminHomePage } from "./page/admin/Home.page";
 import { AuthorPage } from "./page/user/Author.page";
-import { LoginPage } from "./page/Login.page";
 import { AuthorsPage } from "./page/user/Authors.page";
-
-import { RequireAuth } from "./hoc/RequireAuth";
 import { BooksPage } from "./page/user/Books.page";
 import { BookPage } from "./page/user/Book.page";
 import { PublishersPage } from "./page/user/Publishers.page";
 import { PublisherPage } from "./page/user/Publisher.page";
+
+import AdminLayout from "./component/AdminLayout";
+import { AuthorAdminPage } from "./page/admin/Author.page";
+import { AuthorsAdminPage } from "./page/admin/Authors.page";
+import { BooksAdminPage } from "./page/admin/Books.page";
+import { BookAdminPage } from "./page/admin/Book.page";
+import { PublisherAdminPage } from "./page/admin/Publisher.page";
+import { PublishersAdminPage } from "./page/admin/Publishers.page";
+
+import { AddAuthor } from "./component/AddAuthor";
+
+import { LoginPage } from "./page/Login.page";
 import { useContext, useEffect } from "react";
 import { Context } from ".";
 
 import { observer } from "mobx-react-lite";
+import { AddBook } from "./component/AddBook";
+import { AddPublisher } from "./component/AddPublisher";
+import "./css/bootstrap.min.css";
+import "./fontawesome/css/all.min.css";
+import "./css/templatemo-xtra-blog.css";
 
 function App() {
   const { store } = useContext(Context);
@@ -38,18 +50,19 @@ function App() {
           <Route path="book/:id" element={<BookPage />} />
           <Route path="publisher" element={<PublishersPage />} />
           <Route path="publisher/:id" element={<PublisherPage />} />
-          <Route path="genre" element={<>genres</>} />
-          <Route path="genre/:id" element={<>genre</>} />
         </Route>
-        <Route
-          path="/admin"
-          element={
-            <RequireAuth>
-              <AdminLayout />
-            </RequireAuth>
-          }
-        >
-          <Route index element={<AdminHomePage />} />
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route path="author" element={<AuthorsAdminPage />} />
+          <Route path="author/create" element={<AddAuthor />} />
+          <Route path="author/:id" element={<AuthorAdminPage />} />
+
+          <Route path="book" element={<BooksAdminPage />} />
+          <Route path="book/create" element={<AddBook />} />
+          <Route path="book/:id" element={<BookAdminPage />} />
+
+          <Route path="publisher" element={<PublishersAdminPage />} />
+          <Route path="publisher/create" element={<AddPublisher />} />
+          <Route path="publisher/:id" element={<PublisherAdminPage />} />
         </Route>
       </Routes>
     </>

@@ -3,12 +3,15 @@ import { useEffect, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import { API_URI } from "../../const";
 import { SearchForm } from "../../component/SearchForm";
+import { useNavigate } from "react-router-dom";
+import $api from "../../http";
 
-export function BookPage() {
+export function BookAdminPage() {
   const param = useParams();
   const [queryParams] = useSearchParams({ page: 1, query: "" });
   const [book, setBook] = useState({});
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setLoading(true);
@@ -18,6 +21,11 @@ export function BookPage() {
       setLoading(false);
     });
   }, []);
+
+  function handleDelete() {
+    $api.delete("book/" + book._id);
+    navigate("/admin/book");
+  }
 
   return (
     <>
@@ -29,6 +37,9 @@ export function BookPage() {
           <div className="row tm-row">
             <div className="col-12">
               <hr className="tm-hr-primary tm-mb-55" />
+              <button class="tm-btn tm-btn-primary tm-btn-small mb-5" onClick={handleDelete}>
+                Видалити
+              </button>
             </div>
           </div>
           <div className="row tm-row">

@@ -15,19 +15,19 @@ export function LoginPage() {
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        class="mb-5 tm-comment-form"
+        className="mb-5 tm-comment-form"
       >
-        <h2 class="tm-color-primary tm-post-title mb-4">Авторизація</h2>
-        <div class="mb-4">
-          <input class="form-control" onChange={(e) => setEmail(e.target.value)} placeholder="Email" value={email} type="text" />
+        <h2 className="tm-color-primary tm-post-title mb-4">Авторизація</h2>
+        <div className="mb-4">
+          <input className="form-control" onChange={(e) => setEmail(e.target.value)} placeholder="Email" value={email} type="text" />
         </div>
-        <div class="mb-4">
-          <input class="form-control" onChange={(e) => setPassword(e.target.value)} placeholder="Password" value={password} type="password" />
+        <div className="mb-4">
+          <input className="form-control" onChange={(e) => setPassword(e.target.value)} placeholder="Password" value={password} type="password" />
         </div>
-        <div class="mb-4"></div>
-        <div class="text-center">
+        <div className="mb-4"></div>
+        <div className="text-center">
           <button
-            class="tm-btn tm-btn-primary tm-btn-small"
+            className="tm-btn tm-btn-primary tm-btn-small"
             onClick={() => {
               store.login(email, password);
               navigate("/");
@@ -36,7 +36,7 @@ export function LoginPage() {
             Ввійти
           </button>
           <button
-            class="tm-btn tm-btn-primary ml-5 tm-btn-small"
+            className="tm-btn tm-btn-primary ml-5 tm-btn-small"
             onClick={() => {
               store.registration(email, password);
               navigate("/");
